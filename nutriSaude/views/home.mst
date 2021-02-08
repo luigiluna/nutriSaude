@@ -1,0 +1,92 @@
+{{>header}}
+
+<body id="page-top">
+    <div id="wrapper">
+        {{>sideBar}}
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+            <!-- Main Content -->
+            <div id="content">
+                {{>topBar}}
+                <div class="container-fluid">
+                    <div class="row">  
+                        <div class="col">
+                            <form method="post" action="/addPatientAction">
+                                <div class="shadow p-3 mb-5 bg-white rounded">
+                                    <div class="row">
+                                        <div class="col">
+                                            <label for="name" class="form-label">Nome</label>
+                                            <input type="text" class="form-control" name="name" id="name" placeholder="Nome">
+                                        </div>
+                                        <div class="col">    
+                                            <label for="cpf" class="form-label">Cpf</label>
+                                            <input type="text" class="form-control" name="cpf" id="cpf" placeholder="Cpf">
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label for="doctor" class="form-label">Medica</label>
+                                            <select id="doctor" name="doctor" class="form-select">
+                                            <option selected>Medica 1</option>
+                                            <option>Medica 2</option>
+                                            <option>Medica 3</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="col-md-5">
+                                        <label for="price" class="form-label">Preço<br></label> 
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">$</span>
+                                                <input type="text" name="price" class="form-control"  value="130">
+                                                <span class="input-group-text">.00</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-2">
+                                                <div class="form-check" style="margin-top:40px;">
+                                                    <input class="form-check-input" type="checkbox" value="true" name ="bioimpedancia" id="bioimpedancia">
+                                                    <label class="form-check-label" for="bioimpedancia">
+                                                        Bioimpedancia
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div  style="margin-left:80px; margin-top:40px;">
+                                                    <button type="Submit" class="btn btn-outline-primary">Salvar</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col shadow p-3 mb-5 bg-white rounded">
+                            <table id="customers">
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>Medico</th>
+                                    <th>Action</th>
+                                </tr>
+                                {{#patients}}
+                                <tr>
+                                    <td>{{name}}</td>
+                                    <td>{{doctor}}</td>
+                                    <td><a href="/deleteQueue/{{id}}"><img src="/images/icons/excluir.svg" style="width:24px; margin-right:5px; margin-left:5px;"/></a><a href="/"><img src="/images/icons/editar.png" style=" margin-left:5px;"/></a></td>
+                                </tr>
+                               {{/patients}}
+                                
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            <div>
+            {{>footer}}
+        </div>
+    </div>
+  
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin-2.min.js"></script>
+</body>
+</html>

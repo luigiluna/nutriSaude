@@ -1,0 +1,101 @@
+{{>header}}
+
+<body id="page-top">
+    <div id="wrapper">
+    {{>sideBar}}
+        <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+        <!-- Main Content -->
+        <div id="content">
+            {{>topBar}}
+            <div class="container-fluid">
+                <div class="shadow p-3 mb-5 bg-white rounded" id="haha">
+                    <form method="post" action="/painelDoctorAction" autocomplete="off">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label for="doctor" class="form-label">Medica</label>
+                                <select id="doctor" name="doctor" class="form-select">
+                                <option selected>Medica 1</option>
+                                <option>Medica 2</option>
+                                <option>Medica 3</option>
+                                </select>
+                            </div>
+                            <div class="col">
+                                <label for="doctor" class="form-label">Mês</label>
+                                <div class="input-group date" >
+                                    <input type="text" name="date" id ="datepicker" class="form-control">
+                                    <div class="input-group-addon">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2" style="margin-top:34px;">
+                                <button type="Submit" class="btn btn-outline-primary" style="margin-left:20px;">Salvar</button>
+                            </div>
+                        </div>
+                    </form>
+                        {{#table}}
+                            <div style="margin-top:50px;">
+                                <div class="row">
+                                    <div class="col-xl-3 col-md-6 mb-4">
+                                        <div class="card border-left-primary shadow h-100 py-2">
+                                            <div class="card-body">
+                                                <div class="row no-gutters align-items-center">
+                                                    <div class="col mr-2">
+                                                        <div class="h1 text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                            {{doctor}}
+                                                        </div>
+                                                            <br>
+                                                        <div class="h5 mb-0 font-weight-bold text-gray-800">Valor a ser recebido: ${{value}}</div>
+                                                        <br>
+                                                        <div class="text-xs font-weight-bold mb-1">
+                                                                    Quantidade de atendimentos: {{tam}}
+                                                            </div>
+                                                    </div>
+                                                    <div class="col-auto">
+                                                        <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                                    </div>  
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> 
+                                </div>
+                            </div>
+                        {{/table}}
+                    </div>
+                </div>
+            </div>     
+        <div>
+        {{>footer}}
+    </div>
+    </div>
+   
+
+   <!-- Custom scripts for all pages-->
+    <script src="/js/sb-admin-2.min.js"></script>
+
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" ></script>
+
+    <script src="/js/bootstrap-datepicker.min.js"></script>            
+    
+
+    <script src="//cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+
+    <script>
+
+    $('#datepicker').datepicker({
+        language: 'pt-BR',
+        format: "mm-yyyy",
+        startView: "months", 
+        minViewMode: "months",
+        orientation: 'bottom'
+    });
+    </script>
+
+    <script>
+        $(document).ready( function () {
+            $('#example').DataTable();
+        } );
+    </script>
+</body>
+</html>
