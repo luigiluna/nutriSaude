@@ -9,9 +9,7 @@ exports.index = (req, res) => {
 exports.action = (req, res) => {
     let responseJson = {}
 
-    if(req.body.month == undefined || req.body.month == null || req.body.month == ' '){
-        res.redirect('/painelDoctor');  
-    }
+    
     
     responseJson.patients = patientMiddleware.painelFilter(req.body);
     
@@ -19,15 +17,18 @@ exports.action = (req, res) => {
 
     responseJson.tam = responseJson.patients.length;
 
-    responseJson.doctor = responseJson.patients[0].doctor;
+    
 
     
     responseJson.patients.forEach((patient, index) => {
         responseJson.value += patient.price;
+        if(index==0){
+            responseJson.doctor = responseJson.patients[0].doctor;
+        }
         
     });
 
-    console.log(responseJson.value);
+    console.log(responseJson.patients);
     responseJson.table = true;
 
     

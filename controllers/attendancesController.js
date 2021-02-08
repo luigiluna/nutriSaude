@@ -8,13 +8,13 @@ exports.index = (req, res) => {
 }
 
 exports.action = (req, res) => {
-    if(req.body.month == undefined || req.body.month == null || req.body.month == ' '){
-        res.redirect('/attendances');  
-    }
+   
 
     let responseJson = {}
     responseJson.patients = patientMiddleware.painelFilter(req.body);
 
     responseJson.table = true;
+
+    console.log(responseJson.patients);
     res.render('attendances', responseJson);   
 }
