@@ -1,0 +1,28 @@
+{{>header}}
+
+<body id="page-top">
+    <div id="wrapper">
+        {{>sideBar}}
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+            <!-- Main Content -->
+            <div id="content">
+                {{>topBar}}
+                <div class="container-fluid">
+                    <div class="text-center">
+                        <div class="error mx-auto" data-text="404">404</div>
+                        <p class="lead text-gray-800 mb-5">Pagina não encontrada</p>
+                        <p class="text-gray-500 mb-0">Ops, essa pagina não existe ou você não permissão para acessá-la.</p>
+                        <a href="/">&larr; Voltar para pagina inicial.</a>
+                    </div>
+                </div>
+            <div>
+            {{>footer}}
+        </div>
+    </div>
+  
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin-2.min.js"></script>
+</body>
+</html>

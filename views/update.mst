@@ -1,0 +1,148 @@
+{{>header}}
+
+<body id="page-top">
+    <div id="wrapper">
+        {{>sideBar}}
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+            <!-- Main Content -->
+            <div id="content">
+                {{>topBar}}
+                <div class="container-fluid">
+                    <div class="row">  
+                        <div class="col">
+                            {{#patient}}
+                                <form method="post" action="/updatePatientAction" autocomplete="off" id="formUpdate" onsubmit="return validateForm()"> 
+                                    <div class="shadow p-3 mb-5 bg-white rounded">
+                                        <div class="row">
+                                         <input type="text" class="form-control d-none" name="id" id="id" value="{{id}}">
+                                            <div class="col">
+                                                <label for="name" class="form-label">Nome</label>
+                                                <input type="text" class="form-control" name="name" id="name" placeholder="Nome" value="{{name}}">
+                                            </div>
+                                            <div class="col">    
+                                                <label for="telefone" class="form-label">Telefone</label>
+                                                <input type="text" class="form-control" name="telephone" id="telephone" placeholder="Telefone" value="{{telephone}}">
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label for="doctor" class="form-label">Medica</label>
+                                                <select id="doctor" name="doctorKey" class="form-select">
+                                                    <option selected value="false">Livre</option>
+                                                    {{#doctors}}
+                                                        <option value="{{id}}">{{name}}</option>
+                                                    {{/doctors}}
+                                                </select>
+                                            </div>
+
+                                            <div class="col-md-4">
+                                            <label for="price" class="form-label">Preço<br></label> 
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">$</span>
+                                                    <input type="text" name="price" class="form-control"  id="price" value="{{price}}">
+                                                    <span class="input-group-text">.00</span>
+                                                </div>
+                                            </div>
+
+                                             <div class="col-md-2">
+                                                    <div class="form-check" style="margin-top:40px;">
+                                                        <input class="form-check-input" type="checkbox" value="true" name ="sport" id="sport">
+                                                        <label class="form-check-label" for="sport">
+                                                            Esportiva
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                        </div>
+                                            <div class="row">
+                                               
+                                                <div class="col">
+                                                    <div  style= "margin-top:40px; display: inline;">
+                                                        <button style= " margin-top:40px;" type="Submit" class="btn btn-primary">Salvar</button>
+                                                        <button style= "margin-left:10px; margin-top:40px;"  type="button" onclick="submitForm()" class="btn btn-primary">Salvar e Remover da Fila</button>
+                                                    </div>
+                                                    
+                                                </div>
+                                                
+                                            </div>
+                                        
+                                    </div>
+                                </form>
+                            {{/patient}}
+                            
+                        </div>
+                        {{#flashes}}
+                            <div class="row" style="margin-left:5px;">
+                            {{#error}}
+                                <div class="alert alert-danger" role="alert" >
+                                    {{.}} 
+                                </div>
+                            {{/error}}
+                            </div>
+                        {{/flashes}}
+
+                        <div class="col shadow p-3 mb-5 bg-white rounded">
+                            <table id="customers">
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>Medico</th>
+                                    <th>Action</th>
+                                </tr>
+                                {{#queue}}
+                                    <tr>
+                                        <td>{{name}}</td>
+                                        <td>{{doctorName}}</td>
+                                        <td><a href="/deleteQueue/{{id}}"><img src="/images/icons/excluir.svg" style="width:24px; margin-right:5px; margin-left:5px;"/></a><a href="/updatePatient/{{id}}"><img src="/images/icons/editar.png" style=" margin-left:5px;"/></a></td>
+                                    </tr>
+                               {{/queue}}
+                                
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            <div>
+            {{>footer}}
+        </div>
+    </div>
+  
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+  
+    <!-- Custom scripts for all pages-->
+   
+    <script>
+        async function submitForm()
+        { 
+            
+            if(await validateForm()){
+                document.getElementById('formUpdate').action = '/teste';
+                document.getElementById('formUpdate').submit();
+            }
+        }
+    </script>
+
+    <script
+    src="https://code.jquery.com/jquery-3.5.1.min.js"
+    integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+    crossorigin="anonymous">
+    </script>
+     <script src="/js/jquery.mask.min.js"></script>
+   
+
+
+    <script>
+        var maskBehavior = function (val) {
+            return val.replace(/\D/g, '').length === 11 ? '(00) 00000-0000' : '(00) 0000-00009';
+        },
+        options = {onKeyPress: function(val, e, field, options) {
+                field.mask(maskBehavior.apply({}, arguments), options);
+            }
+        };
+
+        $('#telephone').mask(maskBehavior, options);
+    </script>
+
+    <script src="/js/validformUpdate.js"></script>
+  
+</body>
+</html>

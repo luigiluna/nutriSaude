@@ -1,7 +1,7 @@
 const patientData = require('../patientData');
 const patientQueue = require('../patientQueue');
 const fs = require('fs');
-const { push } = require('../patientQueue');
+
 
 exports.getPatients = () => {
     return patientData;
@@ -21,11 +21,14 @@ exports.getPatientByDate = (date) => {
 }
 
 exports.getPatientById = (id) => {
+    let responseJson = {};
     patientData.forEach((patient, index) => {
         if(id == patient.id) {
-            return patient;
+            responseJson = patient;
         }
     })
+    
+    return responseJson;
 }
 
 exports.addPatient = (patient) =>{
@@ -45,7 +48,7 @@ exports.updatePatient = (patient) => {
     patientData.forEach((patientF, index) => {
         if(patient.id == patientF.id) {
             patientF.name = patient.name;
-            patientF.cpf = patient.cpf;
+            patientF.telephone = patient.telephone;
             patientF.doctor = patient.doctor;
             patientF.price = patient.price;
             patientF.bioimpedancia = patient.bioimpedancia;
@@ -109,6 +112,19 @@ exports.addQueue = (patient) => {
     saveQueue();
 }
 
+exports.updateQueue= (patient) => {
+    patientQueue.forEach((patientF, index) => {
+        if(patient.id == patientF.id) {
+            patientF.name = patient.name;
+            patientF.telephone = patient.telephone;
+            patientF.doctor = patient.doctor;
+            patientF.price = patient.price;
+            patientF.bioimpedancia = patient.bioimpedancia;
+        }
+    })
+
+    saveQueue();
+}
 exports.deleteQueue = (id) => { 
 
     patientQueue.forEach((patient, index) => {
@@ -124,7 +140,7 @@ exports.clearQueue = () => {
     saveQueue();
 }
 
-function regenerateId(){
+exports.regenerateId = () => {
     patientData.forEach((patient, index) => {
         patient.id = index + 1;
     })

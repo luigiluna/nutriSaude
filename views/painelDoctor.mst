@@ -12,14 +12,6 @@
                 <div class="shadow p-3 mb-5 bg-white rounded" id="haha">
                     <form method="post" action="/painelDoctorAction" autocomplete="off">
                         <div class="row">
-                            <div class="col-md-4">
-                                <label for="doctor" class="form-label">Medica</label>
-                                <select id="doctor" name="doctor" class="form-select">
-                                <option selected>Medica 1</option>
-                                <option>Medica 2</option>
-                                <option>Medica 3</option>
-                                </select>
-                            </div>
                             <div class="col">
                                 <label for="doctor" class="form-label">Mês</label>
                                 <div class="input-group date" >
@@ -85,7 +77,7 @@
 
     $('#datepicker').datepicker({
         language: 'pt-BR',
-        format: "mm-yyyy",
+        format: "yyyy-m",
         startView: "months", 
         minViewMode: "months",
         orientation: 'bottom'

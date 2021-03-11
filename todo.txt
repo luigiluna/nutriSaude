@@ -1,0 +1,41 @@
+Feitos:
+......\
+- Adicionar campo de telefone
+- Adicionar campo da medica na fila
+- Adicionar a opção de editar os dados do paciente
+- Fazer sistema de banco de dados
+- Fazer sistema de contas
+- Permitir pesquisar usuarios por nome e Telefone
+- Criar tela de configuração da conta admin
+- Criar tela de configuração da conta recepção
+- Fazer Niveis de acesso (admin, medico, recepção)
+- Adicionar botão 'Salvar e remover da fila' na tela de edição
+- Fazer o form funcionar de edição funcionar c duas actions (salvar, salvar e remover)
+- Fazer verificação e validação ao adicionar / remover paciente da fila
+- Validar o form com clientSide js
+- Passar o preço da consulta dinamicamente Home
+- Validar oa exclusão de pacientes da fila
+- Mudar o sistema de verificação se a consulta foi esportiva ou nao
+
+----------------------------------------------------------------
+
+Fazendo: 
+
+
+
+
+----------------------------------------------------------------
+
+A fazer:
+
+
+- Verificar se ja não existe o email ao criar uma nova conta
+
+
+- Check Up interface
+- Check Up codigo 
+- Fazer o campo de modificar senha
+- Fazer o esqueci minha senha
+
+----------------------------------------------------------------
+

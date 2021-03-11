@@ -13,12 +13,12 @@
                         <form method="post" action="/attendancesAction" autocomplete="off">
                             <div class="row">
                                 <div class="col-md-4">
-                                    <label for="doctor" class="form-label">Medica</label>
-                                    <select id="doctor" name="doctor" class="form-select">
+                                    <label for="doctor" class="form-label">Médico</label>
+                                    <select id="doctor" name="doctorKey" class="form-select">
                                     <option selected value="false">Todos</option>
-                                    <option>Medica 1</option>
-                                    <option>Medica 2</option>
-                                    <option>Medica 3</option>
+                                    {{#doctors}}
+                                    <option value="{{id}}">{{name}}</option>
+                                    {{/doctors}}
                                     </select>
                                 </div>
                                 <div class="col">
@@ -28,6 +28,43 @@
                                         <div class="input-group-addon">
                                         </div>
                                     </div>
+                                </div>
+                                 <div class="col-md-2">
+                                    <label for="day" class="form-label">Dia</label>
+                                    <select name="day" class="form-select">
+                                    <option selected >-</option>
+                                    <option >1</option>
+                                    <option >2</option>
+                                    <option >3</option>
+                                    <option >4</option>
+                                    <option >5</option>
+                                    <option >6</option>
+                                    <option >7</option>
+                                    <option >8</option>
+                                    <option >9</option>
+                                    <option >10</option>
+                                    <option >11</option>
+                                    <option >12</option>
+                                    <option >13</option>
+                                    <option >14</option>
+                                    <option >15</option>
+                                    <option >16</option>
+                                    <option >17</option>
+                                    <option >18</option>
+                                    <option >19</option>
+                                    <option >20</option>
+                                    <option >21</option>
+                                    <option >22</option>
+                                    <option >23</option>
+                                    <option >24</option>
+                                    <option >25</option>
+                                    <option >26</option>
+                                    <option >27</option>
+                                    <option >28</option>
+                                    <option >29</option>
+                                    <option >30</option>
+                                    <option >31</option>
+                                    </select>
                                 </div>
                                 <div class="col-md-2" style="margin-top:34px;">
                                     <button type="Submit" class="btn btn-outline-primary" style="margin-left:20px;">Salvar</button>
@@ -42,7 +79,7 @@
                                         <thead>
                                             <tr>
                                                 <th>Name</th>
-                                                <th>Cpf</th>
+                                                <th>Telefone</th>
                                                 <th>Medico</th>
                                                 <th>Preço</th>
                                                 <th>Data</th>
@@ -53,8 +90,8 @@
                                 {{#patients}}
                                     <tr>
                                         <td>{{name}}</td>
-                                        <td>{{cpf}}</td>
-                                        <td>{{doctor}}</td>
+                                        <td>{{telephone}}</td>
+                                        <td>{{doctorName}}</td>
                                         <td>{{price}}</td>
                                         <td>{{date}}</td>
                                     </tr>
@@ -86,7 +123,7 @@
 
     $('#datepicker').datepicker({
         language: 'pt-BR',
-        format: "mm-yyyy",
+        format: "yyyy-m",
         startView: "months", 
         minViewMode: "months",
         orientation: 'bottom'

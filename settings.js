@@ -1,0 +1,1 @@
+module.exports = {"consultationValue":"130","transferValue":"80","consultationValueSport":"150","transferValueSport":"100"}
